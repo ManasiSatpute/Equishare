@@ -1,101 +1,70 @@
-# Welcome to your Lovable project
+# EquiShare – Equipment Sharing Platform
 
-## Project info
+## Overview
+EquiShare is a web-based equipment sharing platform that enables users to rent tools and equipment instead of purchasing them. The system connects equipment owners who have unused tools with users who need them temporarily, creating an efficient and cost-effective sharing ecosystem.
 
-**URL**: https://lovable.dev/projects/038d9f86-2875-4cfa-8cfa-3e6794f57832
+---
 
-## How can I edit this code?
+## Problem Statement
+Many tools and equipment such as power drills, gardening tools, cameras, and construction devices are expensive and often underutilized after purchase. Users typically need these items only for short durations, making ownership inefficient and costly.
 
-There are several ways of editing your application.
+EquiShare addresses this issue by enabling **temporary access to equipment through renting instead of buying**.
 
-**Use Lovable**
+---
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/038d9f86-2875-4cfa-8cfa-3e6794f57832) and start prompting.
+## Why This Platform is Necessary
 
-Changes made via Lovable will be committed automatically to this repo.
+- **High Cost of Equipment**  
+  Many tools are expensive and not affordable for short-term or occasional use.
 
-**Use your preferred IDE**
+- **Low Utilization of Owned Tools**  
+  Most equipment remains unused for long periods after initial use.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+- **Encouraging Resource Sharing**  
+  Promotes a sharing economy where resources are reused instead of duplicated.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- **Environmental Benefits**  
+  Reduces unnecessary production and consumption of equipment.
 
-Follow these steps:
+- **Easy Accessibility**  
+  Users can quickly find and rent required tools through a centralized platform.
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+---
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+## Objectives
 
-# Step 3: Install the necessary dependencies.
-npm i
+- Provide a platform for renting and listing equipment.
+- Enable users to search, book, and manage rentals easily.
+- Allow equipment owners to earn from unused tools.
+- Improve resource utilization and reduce overall costs.
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+---
 
-**Edit a file directly in GitHub**
+## Key Features (Planned / Implemented)
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+- User registration and authentication
+- Equipment listing with details and images
+- Search and filter functionality
+- Rental booking system with date management
+- Payment integration (if applicable)
+- Dashboard for users and owners
 
-**Use GitHub Codespaces**
+---
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Why This Project
 
-## What technologies are used for this project?
+This project demonstrates practical implementation of:
+- Web development concepts
+- Database management systems
+- User authentication and authorization
+- Real-world problem solving using technology
 
-This project is built with:
+It also highlights how digital platforms can support **cost efficiency, sustainability, and collaborative consumption**.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+---
 
-## How can I deploy this project?
+## Conclusion
 
-Simply open [Lovable](https://lovable.dev/projects/038d9f86-2875-4cfa-8cfa-3e6794f57832) and click on Share -> Publish.
+EquiShare provides a smart solution for accessing equipment without ownership. It benefits both owners and renters by reducing costs, improving utilization, and promoting a sustainable sharing model.
 
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
-
-## Frontend ↔ Backend connection
-
-Set the API base URL for the frontend using a Vite env var:
-
-1. Create a file named `.env` in the project root with:
-
-```
-VITE_API_BASE_URL=http://localhost:3000
-```
-
-2. Start the backend: `cd Server && npm i && npm run dev`
-3. Start the frontend: from project root `npm i && npm run dev`
-
-The frontend now reads `VITE_API_BASE_URL` and will call your backend accordingly.
-
-### Backend .env example (MySQL)
-
-Create `Server/.env` with your credentials. If your database is already named `equishare`, set:
-
-```
-DB_HOST=localhost
-DB_USER=your_mysql_user
-DB_PASS=your_mysql_password
-DB_NAME=equishare
-JWT_SECRET=replace_with_a_secure_random_string
-PORT=3000
-```
+---
