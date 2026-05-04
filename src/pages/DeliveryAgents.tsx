@@ -13,7 +13,6 @@ interface DeliveryAgent {
   company: string;
   phone: string;
   rating: number;
- 
 }
 
 const demoAgents: DeliveryAgent[] = [

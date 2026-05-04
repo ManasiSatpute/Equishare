@@ -1,7 +1,6 @@
 import dotenv from "dotenv";
 dotenv.config();
 
-// Minimal AI assistant handler with optional Gemini support
 export const askAssistant = async (req, res) => {
   try {
     const { prompt } = req.body || {};
@@ -11,7 +10,6 @@ export const askAssistant = async (req, res) => {
 
     const apiKey = process.env.GEMINI_API_KEY;
     if (!apiKey) {
-      // Stubbed response if no key is configured
       return res.json({
         success: true,
         model: "stub",
@@ -20,7 +18,7 @@ export const askAssistant = async (req, res) => {
       });
     }
 
-    // Live call using fetch (avoid adding heavy deps). Adjust model as needed.
+   
     const response = await fetch(
       "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=" +
         encodeURIComponent(apiKey),

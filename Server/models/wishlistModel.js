@@ -1,6 +1,6 @@
 import db from "../config/db.js";
 
-// ✅ Fetch wishlist items for a specific user
+//  Fetch wishlist items for a specific user
 export const getWishlistItems = (userId) => {
   const query = `
     SELECT w.id, w.equipment_id, e.name, e.image_url, e.price 
@@ -15,7 +15,7 @@ export const getWishlistItems = (userId) => {
   });
 };
 
-// ✅ Add item to wishlist
+//  Add item to wishlist
 export const addToWishlist = (userId, equipmentId) => {
   const query = `INSERT INTO wishlist (user_id, equipment_id) VALUES (?, ?)`;
   return new Promise((resolve, reject) => {
@@ -26,7 +26,7 @@ export const addToWishlist = (userId, equipmentId) => {
   });
 };
 
-// ✅ Remove item from wishlist
+//  Remove item from wishlist
 export const removeFromWishlist = (userId, equipmentId) => {
   const query = `DELETE FROM wishlist WHERE user_id = ? AND equipment_id = ?`;
   return new Promise((resolve, reject) => {

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom"; // ✅ Added for navigation
+import { useNavigate } from "react-router-dom"; 
 import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -12,7 +12,7 @@ import { API_BASE_URL } from "@/lib/api";
 import { useUser } from "@/context/UserContext";
 
 const Profile = () => {
-  const navigate = useNavigate(); // ✅ Hook for redirection
+  const navigate = useNavigate(); //  Hook for redirection
   const { user, setUser } = useUser();
   const [isLoading, setIsLoading] = useState(false);
   
@@ -30,7 +30,7 @@ const Profile = () => {
     selectedFile: null as File | null,
   });
 
-  // ✅ Utility to get token safely
+  //  Utility to get token safely
   const getAuthHeaders = () => {
     const token = localStorage.getItem("token");
     if (!token) {
@@ -41,7 +41,7 @@ const Profile = () => {
     return { Authorization: `Bearer ${token}` };
   };
 
-  // ✅ Fetch user profile
+  //  Fetch user profile
   useEffect(() => {
     const fetchProfile = async () => {
       try {
@@ -78,7 +78,7 @@ const Profile = () => {
     setFormData((prev) => ({ ...prev, [field]: e.target.value }));
   };
 
-  // ✅ Role Switching Logic with Navigation Fix
+  //  Role Switching Logic with Navigation Fix
   const handleRoleSwitch = async (targetRole: "user" | "owner") => {
     setIsLoading(true);
     try {
@@ -94,8 +94,8 @@ const Profile = () => {
           role: targetRole,
           phone: formData.phone,
           city: formData.city,
-          state: formData.state,             // ✅ Added
-          street_address: formData.street_address, // ✅ Added
+          state: formData.state,             //  Added
+          street_address: formData.street_address, // Added
           pincode: formData.pincode
         }),
       });
@@ -125,7 +125,7 @@ const Profile = () => {
     }
   };
 
-  // ✅ Profile Update (Name/Email)
+  //  Profile Update (Name/Email)
   const handleUpdateProfile = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
@@ -157,7 +157,7 @@ const Profile = () => {
     }
   };
 
-  // ✅ Address Update
+  //  Address Update
   const handleSaveAddress = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
@@ -182,7 +182,7 @@ const Profile = () => {
     }
   };
 
-  // ✅ Image Upload
+  //  Image Upload
   const handleImageUpload = async () => {
     if (!formData.selectedFile) return;
     const formDataToSend = new FormData();
@@ -216,7 +216,7 @@ const Profile = () => {
         </div>
 
         <div className="grid gap-6">
-          {/* ✅ Profile Picture Card */}
+          {/*  Profile Picture Card */}
           <Card>
             <CardHeader>
               <CardTitle>Profile Picture</CardTitle>
@@ -236,7 +236,7 @@ const Profile = () => {
             </CardContent>
           </Card>
 
-          {/* ✅ Role Management Card */}
+          {/*  Role Management Card */}
           <Card className={user?.role === "owner" ? "border-primary bg-primary/5 shadow-sm" : ""}>
             <CardHeader>
               <div className="flex items-center gap-2">

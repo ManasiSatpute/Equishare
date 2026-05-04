@@ -31,62 +31,33 @@ const Cart = () => {
   const [showPaymentModal, setShowPaymentModal] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
 
-  useEffect(() => {
-    const fetchCart = async () => {
-      try {
-        const token = localStorage.getItem("token");
-        console.log('[Cart] Using token for GET /api/cart:', token);
-        if (!token) {
-          console.log('[Cart] No token found');
-          setCartItems([]);
-          setLoading(false);
-          return;
-        }
+  const fetchCart = async () => {
+  try {
+    const token = localStorage.getItem("token");
 
-        const response = await fetch(`${API_BASE_URL}/api/cart`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+    const response = await fetch(`${API_BASE_URL}/api/cart`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
 
-        console.log('[Cart] GET /api/cart response status:', response.status);
-        if (!response.ok) {
-          const text = await response.text();
-          console.error('[Cart] Cart fetch failed:', response.status, response.statusText);
-          console.error('[Cart] Response:', text);
-          toast.error("Failed to load cart");
-          setLoading(false);
-          return;
-        }
+    const data = await response.json();
 
-        const data = await response.json();
-        console.log('[Cart] Raw cart data:', data);
-        if (Array.isArray(data)) {
-          // Log every item for inspection
-          data.forEach((item, idx) => {
-            console.log(`[Cart] Item ${idx}:`, item);
-          });
-          // Map backend cart_id to id for frontend
-          const mappedItems = data.map(item => ({
-            ...item,
-            id: item.id ?? item.cart_id ?? item.equipment_id // fallback for id
-          }));
-          setCartItems(mappedItems);
-        } else {
-          console.error('[Cart] Invalid cart data received:', data);
-          setCartItems([]);
-          toast.error("Invalid cart data received");
-        }
-      } catch (error) {
-        console.error('[Cart] Error fetching cart:', error);
-        toast.error("Failed to load cart");
-        setCartItems([]);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchCart();
-  }, []);
+    if (Array.isArray(data)) {
+      setCartItems(data);
+    } else {
+      setCartItems([]);
+    }
+  } catch (error) {
+    console.error(error);
+  } finally {
+    setLoading(false);
+  }
+};
+
+useEffect(() => {
+  fetchCart();
+}, []);
 
   const handleRemove = async (cartItemId: number | undefined) => {
     try {
@@ -123,7 +94,7 @@ const Cart = () => {
       console.log('[Cart] Remove response data:', data);
 
       if (res.ok) {
-        setCartItems(prev => prev.filter(item => item.id !== cartItemId));
+        await fetchCart();
         toast.success(data.message || "Removed from cart");
       } else {
         // Revert loading state if failed
@@ -273,8 +244,8 @@ const Cart = () => {
         ) : (
           <div className="grid lg:grid-cols-3 gap-6">
             <div className="lg:col-span-2 space-y-4">
-              {cartItems.map((item, idx) => (
-                <Card key={`${item.id}-${idx}`}>
+              {cartItems.map((item) => (
+                <Card key={item.id}>
                   <CardContent className="flex items-center gap-4 p-4">
                     <img
                       src={

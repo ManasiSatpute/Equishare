@@ -1,7 +1,7 @@
 import db from "../config/db.js";
 import dayjs from "dayjs";
 
-// --- UTILS ---
+// UTILS
 const getTransaction = async () => {
     const connection = await db.promise().getConnection();
     await connection.beginTransaction();

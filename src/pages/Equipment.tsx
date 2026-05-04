@@ -156,9 +156,9 @@ const Equipment = () => {
           {/* Details */}
           <div className="space-y-6">
             <div>
-              <Badge variant="secondary" className="mb-2">
+              {/* <Badge variant="secondary" className="mb-2">
                 {equipment.category}
-              </Badge>
+              </Badge> */}
               <h1 className="font-heading text-3xl font-bold mb-2">
                 {equipment.name}
               </h1>
@@ -169,6 +169,9 @@ const Equipment = () => {
               <p className="text-4xl font-bold text-primary">
                 ₹{equipment.price}
                 <span className="text-lg text-muted-foreground">/day</span>
+              </p>
+              <p className="text-sm text-muted-foreground mt-2">
+              Available Quantity: <span className="font-semibold">{equipment.quantity}</span>
               </p>
             </div>
 
@@ -207,16 +210,22 @@ const Equipment = () => {
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
                     <span className="text-lg font-bold text-primary">
-                      {equipment.owner?.name?.charAt(0)}
+                     {(equipment.owner?.name || equipment.owner_name || "U").charAt(0)}
                     </span>
                   </div>
                   <div>
-                    <p className="font-medium">{equipment.owner?.name}</p>
-                    <p className="text-sm text-muted-foreground">
-                      ⭐ {equipment.owner?.rating} •{" "}
-                      {equipment.owner?.totalRentals} rentals
+                    <p className="font-medium">
+                      Verified Owner 
                     </p>
+
+                      {/* <p className="text-sm text-muted-foreground">
+                      ⭐ {equipment.owner?.rating || equipment.owner_rating || 0} •{" "}
+                      {equipment.owner?.totalRentals || equipment.owner_total_rentals || 0} rentals
+                        </p> */}
                   </div>
+                </div>
+                <div>
+
                 </div>
               </CardContent>
             </Card>

@@ -63,8 +63,8 @@ const uploadProfileImage = async (req, res) => {
 };
 // import db from "../config/db.js"; // adjust if your DB connection file is different
 
-// ✅ update only address fields
-// ✅ Update only address fields
+
+//  Update only address fields
 export const updateUserAddress = async (req, res) => {
   try {
     const userId = req.user.id;
@@ -93,7 +93,7 @@ export const updateUserAddress = async (req, res) => {
 };
 
 
-// ✅ Change Password
+// change Password
 export const changePassword = (req, res) => {
   const userId = req.user.id;
   const { currentPassword, newPassword } = req.body || {};
@@ -119,7 +119,7 @@ export const changePassword = (req, res) => {
   });
 };
 
-// ✅ Delete Account (and clean simple related data)
+//  Delete Account (and clean simple related data)
 export const deleteAccount = async (req, res) => {
   try {
     const userId = req.user.id;
